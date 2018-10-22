@@ -23,12 +23,25 @@ class ShipRooms(object):
 		changeRooms(toHere)
 
 def changeRooms(toHere):
-	print "-" * 10
-	print("[Moving rooms to: %r.]") % (toHere)
-	if toHere == "medicalRoom":
-		medR.enter()
-	elif toHere == "weaponsRoom":
-		weaponR.enter()
-	else:
-		"error in changeRooms method..."
-	print "-" * 10
+	keepPlaying = True
+	while keepPlaying:
+		print "-" * 10
+		if toHere == "medicalRoom":
+			toHere = medR.enter()
+		elif toHere == "weaponsRoom":
+			toHere = weaponR.enter()
+		elif toHere == "radioRoom":
+			toHere = radioR.enter()
+		elif toHere == "armourRoom":
+			toHere = armourR.enter()
+		elif toHere == "centralCommandRoom":
+			toHere = centralCommandR.enter()
+		elif toHere == "escapeRoom":
+			escapeR.enter()
+			keepPlaying = False
+			break
+		else:
+			"error in changeRooms method..."
+
+		changeRooms(toHere)
+		keepPlaying = False
