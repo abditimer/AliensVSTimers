@@ -14,6 +14,7 @@ radioR = shipR.RadioRoom()
 armourR = shipR.ArmourRoom()
 centralCommandR = shipR.CentralCommandRoom()
 escapeR = shipR.EscapeRoom()
+deathRoom = shipR.DeathRoom()
 
 
 class ShipRooms(object):
@@ -38,6 +39,10 @@ def changeRooms(toHere):
 			toHere = centralCommandR.enter()
 		elif toHere == "escapeRoom":
 			escapeR.enter()
+			keepPlaying = False
+			break
+		elif toHere == "deathRoom":
+			deathRoom.enter()
 			keepPlaying = False
 			break
 		else:

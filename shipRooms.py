@@ -46,8 +46,37 @@ class MedicineRoom(RoomLayout):
 
 	def enter(self):
 		print "This is the medical room."
-		print "You get replenished."
-		return 'weaponsRoom'
+		#You are low in health. Need to find antibiatocs. take the wrong ones and die.
+		returned = self.medRoomExploring()
+		return returned
+	
+	def medRoomExploring(self):
+		#this method is for finding the antibiotics. 
+		print "You feel a sharp pain in the lower abdomen."
+		print "You need to find some antibiotics...quickly"
+		self.youFeelFaint()
+		print "Lets look for some antibiotics."
+		return self.lookForMedicine()
+
+	def youFeelFaint(self):
+		print("\n\n\nYou\nFeel\nFaint\n...\n")
+
+	def lookForMedicine(self):
+		print("You are approached by a medical robot, who proceeds to print some information on its stomach screen...")
+		print("\nI have three different medicines; \none that can cure you, \none that can kill you and the last one can....I'm not sure to be honest. ")
+		print("So, which do you pick. A, B or C?")
+		return self.pickMed()
+
+
+	def pickMed(self):
+		usersChoice = raw_input(">")
+		if usersChoice == 'A' or usersChoice == 'a':
+			print "It seems like the robots screen is printing something..."
+			print "\'WRONG CHOICE! HAHA YOU DEAD.\'"
+			return 'deathRoom'
+		else:
+			print "You seem to be healed. Well done!"
+			return 'weaponsRoom'
 
 class WeaponsRoom(RoomLayout):
 	"""This is the room with weapons."""
@@ -100,6 +129,12 @@ class EscapeRoom(RoomLayout):
 
 		print "now the chase begins...."
 
+class DeathRoom(RoomLayout):
+	def __init__(self):
+		pass
+
+	def enter(self):
+		print ("Well, this is awkward. \nMate, you're dead.")
 
 
 
